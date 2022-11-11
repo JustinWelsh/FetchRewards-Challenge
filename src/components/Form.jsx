@@ -3,7 +3,7 @@ import { BsFillCaretDownFill } from "react-icons/bs";
 const Form = () => {
   return (
     <>
-      <div className="card flex-shrink-0 w-full max-w-xl shadow-2xl bg-base-100 p-5">
+      <div className="card flex-shrink-0 w-full max-w-xl shadow-2xl bg-base-100 p-6">
         <h1 className="text-4xl font-bold">User Creation Form</h1>
         <div className="card-body">
           <div className="form-control py-2">
