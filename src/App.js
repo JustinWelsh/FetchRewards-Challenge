@@ -14,7 +14,6 @@ function App() {
     .then(data => setEndpointData(data))
   }, [])
 
-
   return (
     <div className="App">
       <header className="App-header">

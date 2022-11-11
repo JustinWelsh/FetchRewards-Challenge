@@ -1,4 +1,4 @@
-import SubmitBtn from "../button/SubmitBtn";
+import Button from "../button/Button";
 import { useState } from "react";
 
 const UserCreationForm = (props) => {
@@ -72,7 +72,7 @@ const UserCreationForm = (props) => {
             />
           </div>
 
-          <SubmitBtn />
+          <Button>Submit</Button>
         </div>
       </div>
     </>
