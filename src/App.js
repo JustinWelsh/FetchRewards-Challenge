@@ -1,26 +1,13 @@
 import "./App.css";
-import Form from "./components/Form";
+import UserCreationForm from "./components/form/UserCreationForm";
+import BackgroundImg from "./components/BackgroundImg"
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img
-          className="absolute w-full"
-          src={`${process.env.PUBLIC_URL}/images/layered-waves-haikei.svg`}
-          alt="background"
-        />
-        <img
-          className="absolute w-full"
-          src={`${process.env.PUBLIC_URL}/images/star-scatter-haikei-yellow.svg`}
-          alt="background"
-        />
-                <img
-          className="absolute w-full"
-          src={`${process.env.PUBLIC_URL}/images/star-scatter-haikei-purple.svg`}
-          alt="background"
-        />
-        <Form />
+        <BackgroundImg />
+        <UserCreationForm />
       </header>
     </div>
   );

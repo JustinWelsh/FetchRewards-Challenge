@@ -1,6 +1,6 @@
-import { BsFillCaretDownFill } from "react-icons/bs";
+import SubmitBtn from "../button/SubmitBtn";
 
-const Form = () => {
+const UserCreationForm = () => {
   return (
     <>
       <div className="card flex-shrink-0 w-full max-w-3xl shadow-2xl bg-white p-7">
@@ -55,12 +55,10 @@ const Form = () => {
             />
           </div>
 
-          <div className="form-control mt-6">
-            <button className="btn rounded-full bg-[#300C38] hover:bg-[#880174] border-none text-white shadow-md">Submit</button>
-          </div>
+        <SubmitBtn />
         </div>
       </div>
     </>
   );
 };
-export default Form;
+export default UserCreationForm;
