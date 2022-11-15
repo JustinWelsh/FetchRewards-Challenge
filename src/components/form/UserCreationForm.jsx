@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const UserCreationForm = (props) => {
 
-  const [userForm, setUserForm] = useState({
+  const initialState = {
     name: "",
     occupation: "",
     state: "",
@@ -18,7 +18,8 @@ const UserCreationForm = (props) => {
       password: '',
       confirmPassword: '',
     }
-  });
+  }
+  const [userForm, setUserForm] = useState(initialState);
 
   const validEmailRegex = RegExp(
     /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
@@ -28,7 +29,6 @@ const UserCreationForm = (props) => {
     Object.values(errors).forEach(val => val.length > 0 && (valid = false));
     return valid;
   };
-
 
   const occupationElements = props.endpointData?.occupations?.map((index) => (
     <option key={index}>{index}</option>
@@ -50,6 +50,22 @@ const UserCreationForm = (props) => {
             ? 'Full Name must be at least 5 characters long!'
             : '';
         break;
+
+        case 'occupation': 
+        errors.occupation = 
+          value === '' || value === 'Occupation'
+            ? 'Occupation required'
+            : '';
+          console.log(errors.occupation)
+        break;
+        case 'state': 
+        errors.state = 
+        value === '' || value === 'State'
+            ? 'State required'
+            : '';
+            console.log(errors.state)
+        break;
+
       case 'email': 
         errors.email = 
           validEmailRegex.test(value)
@@ -62,15 +78,13 @@ const UserCreationForm = (props) => {
             ? 'Password must be at least 8 characters long!'
             : '';
         break;
-
         case 'confirmPassword': 
         errors.confirmPassword = 
           value !== userForm.password
-            ? 'Password doesn\'t match!'
+            ? 'Confirmation password doesn\'t match!'
             : '';
           console.log(errors.confirmPassword)
         break;
-
       default:
         break;
     }
@@ -98,6 +112,9 @@ const UserCreationForm = (props) => {
       })
       .then(res => res.json())
       .then(data => console.log(data)) // if (201) => reset state | re enable submit btn | render success message.
+
+      console.log(userForm.errors);
+
     }else{
       console.error('Invalid Form')
       console.log(userForm.errors);
@@ -132,6 +149,10 @@ const UserCreationForm = (props) => {
               <option>Occupation</option>
               {occupationElements}
             </select>
+
+            {userForm.errors.occupation !== '' && (
+              <p className="text-sm text-[#f87171] pt-2">{userForm.errors.occupation}</p>
+            )}
             <select
             name="state" value={userForm.state}
             onChange={handleChange}
@@ -139,6 +160,10 @@ const UserCreationForm = (props) => {
               <option>State</option>
               {stateElements}
             </select>
+
+            {userForm.errors.state !== '' && (
+              <p className="text-sm text-[#f87171] pt-2">{userForm.errors.state}</p>
+            )}
           </div>
 
           <div className="form-control py-2">
