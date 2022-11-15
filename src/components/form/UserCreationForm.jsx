@@ -2,6 +2,31 @@ import Button from "../button/Button";
 import { useState } from "react";
 
 const UserCreationForm = (props) => {
+
+  const [userForm, setUserForm] = useState({
+    name: "",
+    occupation: "",
+    state: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    errors: {
+      fullName: '',
+      email: '',
+      password: ''
+    }
+  });
+
+  const validEmailRegex = RegExp(
+    /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+  );
+  const validateForm = errors => {
+    let valid = true;
+    Object.values(errors).forEach(val => val.length > 0 && (valid = false));
+    return valid;
+  };
+
+
   const occupationElements = props.endpointData?.occupations?.map((index) => (
     <option key={index}>{index}</option>
   ));
@@ -13,33 +38,59 @@ const UserCreationForm = (props) => {
   const handleChange = (e) => {
     const name = e.target.name; 
     const value = e.target.value;
+    let errors = userForm.errors;
+
+    switch (name) {
+      case 'name': 
+        errors.fullName = 
+          value.length < 5
+            ? 'Full Name must be at least 5 characters long!'
+            : '';
+        break;
+      case 'email': 
+        errors.email = 
+          validEmailRegex.test(value)
+            ? ''
+            : 'Email is not valid!';
+        break;
+      case 'password': 
+        errors.password = 
+          value.length < 8
+            ? 'Password must be at least 8 characters long!'
+            : '';
+        break;
+      default:
+        break;
+    }
     setUserForm({
       ...userForm,
       [name]: value
     })
   }
   const handleSubmit = () => {
-    fetch(`https://frontend-take-home.fetchrewards.com/form`, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(userForm),
-    })
-    .then(res => res.json())
-    .then(data => console.log(data))
+    if(validateForm(userForm.errors)) {
+      console.info('Valid Form')
+      fetch(`https://frontend-take-home.fetchrewards.com/form`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: userForm.name,
+          occupation: userForm.occupation,
+          state: userForm.state,
+          email: userForm.email,
+          password: userForm.password,
+        }),
+      })
+      .then(res => res.json())
+      .then(data => console.log(data))
+    }else{
+      console.error('Invalid Form')
+      console.log(userForm.errors);
+    }
   };
-
-  const [userForm, setUserForm] = useState({
-    name: "",
-    occupation: "",
-    state: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
-
   
   return (
     <>
@@ -52,10 +103,13 @@ const UserCreationForm = (props) => {
             <input
               type="text"
               placeholder="full name"
-              name="name" value={userForm.fullName}
+              name="name" value={userForm.name}
               onChange={handleChange}
               className="input input-bordered bg-white focus:border-[#FAA916]"
             />
+            {userForm.errors.fullName !== '' && (
+              <p className="text-sm text-[#f87171] pt-2">{userForm.errors.fullName}</p>
+            )}
           </div>
 
           <div className="flex gap-8 py-3 focus:bg-[#FAA916]">
@@ -83,6 +137,9 @@ const UserCreationForm = (props) => {
               onChange={handleChange}
               className="input input-bordered bg-white focus:border-[#FAA916]"
             />
+            {userForm.errors.email !== '' && (
+              <p className="text-sm text-[#f87171] pt-2">{userForm.errors.email}</p>
+            )}
           </div>
 
           <div className="form-control py-2">
@@ -93,6 +150,9 @@ const UserCreationForm = (props) => {
               onChange={handleChange}
               className="input input-bordered bg-white focus:border-[#FAA916]"
             />
+            {userForm.errors.password !== '' && (
+              <p className="text-sm text-[#f87171] pt-2">{userForm.errors.password}</p>
+            )}
           </div>
 
           <div className="form-control py-2">
