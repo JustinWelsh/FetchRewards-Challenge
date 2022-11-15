@@ -12,8 +12,11 @@ const UserCreationForm = (props) => {
     confirmPassword: "",
     errors: {
       fullName: '',
+      occupation: '',
+      state: '',
       email: '',
-      password: ''
+      password: '',
+      confirmPassword: '',
     }
   });
 
@@ -59,6 +62,15 @@ const UserCreationForm = (props) => {
             ? 'Password must be at least 8 characters long!'
             : '';
         break;
+
+        case 'confirmPassword': 
+        errors.confirmPassword = 
+          value !== userForm.password
+            ? 'Password doesn\'t match!'
+            : '';
+          console.log(errors.confirmPassword)
+        break;
+
       default:
         break;
     }
@@ -85,7 +97,7 @@ const UserCreationForm = (props) => {
         }),
       })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => console.log(data)) // if (201) => reset state | re enable submit btn | render success message.
     }else{
       console.error('Invalid Form')
       console.log(userForm.errors);
@@ -163,6 +175,9 @@ const UserCreationForm = (props) => {
               onChange={handleChange}
               className="input input-bordered bg-white focus:border-[#FAA916]"
             />
+            {userForm.errors.confirmPassword !== '' && (
+              <p className="text-sm text-[#f87171] pt-2">{userForm.errors.confirmPassword}</p>
+            )}
           </div>
 
           <Button onClick={handleSubmit}>Submit</Button>
