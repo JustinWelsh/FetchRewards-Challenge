@@ -1,5 +1,7 @@
 import Button from "../button/Button";
 import { useState } from "react";
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+
 
 const UserCreationForm = (props) => {
 
@@ -21,6 +23,8 @@ const UserCreationForm = (props) => {
   }
   const [userForm, setUserForm] = useState(initialState);
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true)
+  const [passwordVis, setPasswordVis] = useState(false)
+  const [confirmPwVis, setConfirmPwVis] = useState(false)
 
   const validEmailRegex = RegExp(
     /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
@@ -31,11 +35,11 @@ const UserCreationForm = (props) => {
     return valid;
   };
 
-const isEmpty = () => {
-  if(userForm.name === '' || userForm.occupation === '' || userForm.state === '' || userForm.email === '' || userForm.password === '' || userForm.confirmPassword === '') {
-    return true
-  } return false
-}
+  const isEmpty = () => {
+    if(userForm.name === '' || userForm.occupation === '' || userForm.state === '' || userForm.email === '' || userForm.password === '' || userForm.confirmPassword === '') {
+      return true
+    } return false
+  }
 
   const occupationElements = props.endpointData?.occupations?.map((index) => (
     <option key={index}>{index}</option>
@@ -187,27 +191,39 @@ const isEmpty = () => {
             )}
           </div>
 
-          <div className="form-control py-2">
-            <input
-              type="password"
-              placeholder="password"
-              name="password" value={userForm.password}
-              onChange={handleChange}
-              className="input input-bordered bg-white focus:border-[#FAA916]"
-            />
+          <div className="form-control py-2 relative">
+              <input
+                type={passwordVis ? "text" : "password"}
+                placeholder="password"
+                name="password" value={userForm.password}
+                onChange={handleChange}
+                className="input input-bordered bg-white focus:border-[#FAA916]"
+              />
+              <div className="absolute right-2 top-4">
+                {!passwordVis
+                ? <AiFillEye onClick={() => setPasswordVis(!passwordVis)} />
+                : <AiFillEyeInvisible onClick={() => setPasswordVis(!passwordVis)} />}
+              </div>
+
             {userForm.errors.password !== '' && (
               <p className="text-sm text-[#f87171] pt-2">{userForm.errors.password}</p>
             )}
           </div>
 
-          <div className="form-control py-2">
+          <div className="form-control py-2 relative">
             <input
-              type="password"
+              type={confirmPwVis ? "text" : "password"}
               placeholder="confirm password"
               name="confirmPassword" value={userForm.confirmPassword}
               onChange={handleChange}
               className="input input-bordered bg-white focus:border-[#FAA916]"
             />
+            <div className="absolute right-2 top-4">
+              {!confirmPwVis
+              ? <AiFillEye onClick={() => setConfirmPwVis(!confirmPwVis)} />
+              : <AiFillEyeInvisible onClick={() => setConfirmPwVis(!confirmPwVis)} />}
+            </div>
+
             {userForm.errors.confirmPassword !== '' && (
               <p className="text-sm text-[#f87171] pt-2">{userForm.errors.confirmPassword}</p>
             )}
