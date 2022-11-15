@@ -54,16 +54,14 @@ const UserCreationForm = (props) => {
         case 'occupation': 
         errors.occupation = 
           value === '' || value === 'Occupation'
-            ? 'Occupation required'
+            ? 'required'
             : '';
-          console.log(errors.occupation)
         break;
         case 'state': 
         errors.state = 
         value === '' || value === 'State'
-            ? 'State required'
+            ? 'required'
             : '';
-            console.log(errors.state)
         break;
 
       case 'email': 
@@ -151,7 +149,7 @@ const UserCreationForm = (props) => {
             </select>
 
             {userForm.errors.occupation !== '' && (
-              <p className="text-sm text-[#f87171] pt-2">{userForm.errors.occupation}</p>
+              <span className="text-sm text-[#f87171] pt-2">{userForm.errors.occupation}</span>
             )}
             <select
             name="state" value={userForm.state}
