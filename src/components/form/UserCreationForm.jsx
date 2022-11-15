@@ -98,6 +98,8 @@ const isEmpty = () => {
     })
     if(validateForm(userForm.errors) && !isEmpty()) {
       setIsSubmitDisabled(false)
+    } else {
+      setIsSubmitDisabled(true)
     }
   }
   const handleSubmit = () => {
