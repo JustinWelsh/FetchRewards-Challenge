@@ -1,6 +1,6 @@
 const Button = (props) => (
   <div className="form-control mt-6">
-    <button className="btn rounded-full bg-[#300C38] hover:bg-[#880174] border-none text-white shadow-md" {...props}>
+    <button className="btn rounded-full bg-[#300C38] hover:bg-[#880174] border-none text-white shadow-md disabled:bg-[#300C38] disabled:opacity-50" {...props}>
       {props.children}
     </button>
   </div>

@@ -20,6 +20,7 @@ const UserCreationForm = (props) => {
     }
   }
   const [userForm, setUserForm] = useState(initialState);
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true)
 
   const validEmailRegex = RegExp(
     /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
@@ -29,6 +30,12 @@ const UserCreationForm = (props) => {
     Object.values(errors).forEach(val => val.length > 0 && (valid = false));
     return valid;
   };
+
+const isEmpty = () => {
+  if(userForm.name === '' || userForm.occupation === '' || userForm.state === '' || userForm.email === '' || userForm.password === '' || userForm.confirmPassword === '') {
+    return true
+  } return false
+}
 
   const occupationElements = props.endpointData?.occupations?.map((index) => (
     <option key={index}>{index}</option>
@@ -81,7 +88,6 @@ const UserCreationForm = (props) => {
           value !== userForm.password
             ? 'Confirmation password doesn\'t match!'
             : '';
-          console.log(errors.confirmPassword)
         break;
       default:
         break;
@@ -90,6 +96,9 @@ const UserCreationForm = (props) => {
       ...userForm,
       [name]: value
     })
+    if(validateForm(userForm.errors) && !isEmpty()) {
+      setIsSubmitDisabled(false)
+    }
   }
   const handleSubmit = () => {
     if(validateForm(userForm.errors)) {
@@ -112,7 +121,6 @@ const UserCreationForm = (props) => {
       .then(data => console.log(data)) // if (201) => reset state | re enable submit btn | render success message.
 
       console.log(userForm.errors);
-
     }else{
       console.error('Invalid Form')
       console.log(userForm.errors);
@@ -203,7 +211,9 @@ const UserCreationForm = (props) => {
             )}
           </div>
 
-          <Button onClick={handleSubmit}>Submit</Button>
+          <Button disabled={isSubmitDisabled} onClick={handleSubmit}>
+            Submit
+            </Button>
         </div>
       </div>
     </>
