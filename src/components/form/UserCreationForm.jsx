@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SuccessModal from "../madal/SuccessModal";
+import SuccessModal from "../modal/SuccessModal";
 import PasswordCreation from "./inputs/PasswordCreation";
 
 const UserCreationForm = (props) => {

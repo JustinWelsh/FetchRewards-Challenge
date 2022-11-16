@@ -15,15 +15,15 @@ const SuccessModal = (props) => {
       <input type="checkbox" id="my-modal-6" className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
-          <h3 className="font-bold text-lg">
-            Congratulations, user was successfully created!
+          <h3 className="font-bold text-lg text-[#22c55e]">
+            Congratulations, user was successfully created! 🎉
           </h3>
-          <p className="py-4">
+          <p className="py-4 text-white">
             You've been selected for a chance to get one year of subscription to
             use Wikipedia for free!
           </p>
           <div className="modal-action">
-            <label htmlFor="my-modal-6" className="btn">
+            <label htmlFor="my-modal-6" className="btn btn-sm rounded-full bg-[#300C38] hover:bg-[#880174] border-none">
               Ok
             </label>
           </div>
