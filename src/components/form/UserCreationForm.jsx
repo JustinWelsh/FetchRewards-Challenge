@@ -1,6 +1,7 @@
 import Button from "../button/Button";
 import { useState } from "react";
 import PasswordCreation from "./inputs/PasswordCreation";
+import SuccessMsg from "./alert/SuccessMsg";
 
 
 const UserCreationForm = (props) => {
@@ -23,6 +24,7 @@ const UserCreationForm = (props) => {
   }
   const [userForm, setUserForm] = useState(initialState);
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true)
+  const [successAlertHidden, setSuccessAlertHidden] = useState(true)
 
   const validEmailRegex = RegExp(
     /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
@@ -121,8 +123,18 @@ const UserCreationForm = (props) => {
           password: userForm.password,
         }),
       })
-      .then(res => res.json())
-      .then(data => console.log(data)) // if (201) => reset state | re enable submit btn | render success message.
+      .then(res => {
+        console.log(res)
+        if (res.status === 201) {
+          console.log("201 success!")
+          setUserForm(initialState);
+          setIsSubmitDisabled(true)
+          setSuccessAlertHidden(false)
+          setTimeout(() => {
+            setSuccessAlertHidden(true)
+          },3000)
+        }
+      }) // if (201) => reset state | re enable submit btn | render success message.
 
       console.log(userForm.errors);
     }else{
@@ -133,6 +145,7 @@ const UserCreationForm = (props) => {
   
   return (
     <>
+    { !successAlertHidden && <SuccessMsg />}
       <div className="card flex-shrink-0 w-full max-w-3xl shadow-2xl bg-white p-7">
         <h1 className="text-4xl font-bold text-[#300C38]">
           User Creation Form
@@ -193,7 +206,7 @@ const UserCreationForm = (props) => {
 
           <Button disabled={isSubmitDisabled} onClick={handleSubmit}>
             Submit
-            </Button>
+          </Button>
         </div>
       </div>
     </>
