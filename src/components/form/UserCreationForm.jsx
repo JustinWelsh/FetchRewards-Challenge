@@ -147,7 +147,7 @@ const UserCreationForm = (props) => {
     <>
     { !successAlertHidden && <SuccessMsg />}
       <div className="card flex-shrink-0 w-full max-w-3xl shadow-2xl bg-white p-7">
-        <h1 className="text-4xl font-bold text-[#300C38]">
+        <h1 className="text-4xl font-bold text-[#300C38] text-center">
           User Creation Form
         </h1>
         <div className="card-body text-[#300C38]">
@@ -164,22 +164,22 @@ const UserCreationForm = (props) => {
             )}
           </div>
 
-          <div className="flex gap-8 py-3 focus:bg-[#FAA916]">
+          <div className="sm:flex sm:gap-8 sm:py-3 focus:bg-[#FAA916]">
             <select
             name="occupation" value={userForm.occupation}
             onChange={handleChange}
-            className="select select-ghost max-w-xs bg-white focus:bg-[#FAA916] focus:text-white shadow-md">
+            className="select select-ghost max-w-xs bg-white focus:bg-[#FAA916] focus:text-white shadow-md mb-2 sm:my-0">
               <option>Occupation</option>
               {occupationElements}
             </select>
 
             {userForm.errors.occupation !== '' && (
-              <span className="text-sm text-[#f87171] pt-2">{userForm.errors.occupation}</span>
+              <p className="text-sm text-[#f87171] pt-2">{userForm.errors.occupation}</p>
             )}
             <select
             name="state" value={userForm.state}
             onChange={handleChange}
-            className="select select-ghost max-w-xs bg-white focus:bg-[#FAA916] focus:text-white shadow-md">
+            className="select select-ghost max-w-xs bg-white focus:bg-[#FAA916] focus:text-white shadow-md mt-2 sm:my-0">
               <option>State</option>
               {stateElements}
             </select>
