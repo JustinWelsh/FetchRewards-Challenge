@@ -122,7 +122,7 @@ const UserCreationForm = (props) => {
         }),
       })
       .then(res => {
-        console.log(res)
+        // console.log(res)
         if (res.status === 201) {
           console.log("201 success!")
           setUserForm(initialState);
@@ -131,7 +131,6 @@ const UserCreationForm = (props) => {
         }
       }) // if (201) => reset state | re enable submit btn | render success message.
 
-      console.log(userForm.errors);
     }else{
       console.error('Invalid Form')
       console.log(userForm.errors);
