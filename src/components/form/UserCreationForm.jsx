@@ -1,8 +1,6 @@
 import Button from "../button/Button";
 import { useState } from "react";
 import PasswordCreation from "./inputs/PasswordCreation";
-import SuccessMsg from "./alert/SuccessMsg";
-
 
 const UserCreationForm = (props) => {
 
@@ -130,9 +128,6 @@ const UserCreationForm = (props) => {
           setUserForm(initialState);
           setIsSubmitDisabled(true)
           setSuccessAlertHidden(false)
-          setTimeout(() => {
-            setSuccessAlertHidden(true)
-          },3000)
         }
       }) // if (201) => reset state | re enable submit btn | render success message.
 
@@ -145,7 +140,6 @@ const UserCreationForm = (props) => {
   
   return (
     <>
-    { !successAlertHidden && <SuccessMsg />}
       <div className="card flex-shrink-0 w-full max-w-3xl shadow-2xl bg-white p-7">
         <h1 className="text-4xl font-bold text-[#300C38] text-center">
           User Creation Form
@@ -203,10 +197,6 @@ const UserCreationForm = (props) => {
           </div>
 
           <PasswordCreation userForm={userForm} handleChange={handleChange} />
-
-          <Button disabled={isSubmitDisabled} onClick={handleSubmit}>
-            Submit
-          </Button>
 
           {/* The button to open modal */}
           <label
