@@ -16,7 +16,7 @@ const PasswordCreation = (props) => {
           onChange={props.handleChange}
           className="input input-bordered bg-white focus:border-[#FAA916]"
         />
-        <div className="absolute right-2 top-4">
+        <div className="absolute right-2 top-5">
           {!passwordVis ? (
             <AiFillEye onClick={() => setPasswordVis(!passwordVis)} />
           ) : (
@@ -40,7 +40,7 @@ const PasswordCreation = (props) => {
           onChange={props.handleChange}
           className="input input-bordered bg-white focus:border-[#FAA916]"
         />
-        <div className="absolute right-2 top-4">
+        <div className="absolute right-2 top-5">
           {!confirmPwVis ? (
             <AiFillEye onClick={() => setConfirmPwVis(!confirmPwVis)} />
           ) : (
