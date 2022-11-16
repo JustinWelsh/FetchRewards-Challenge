@@ -198,7 +198,7 @@ const UserCreationForm = (props) => {
 
           <PasswordCreation userForm={userForm} handleChange={handleChange} />
 
-          <SuccessModal handleSubmit={handleSubmit} />
+          <SuccessModal handleSubmit={handleSubmit} isSubmitDisabled={isSubmitDisabled} />
 
         </div>
       </div>

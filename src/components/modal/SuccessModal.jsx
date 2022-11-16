@@ -3,27 +3,27 @@ const SuccessModal = (props) => {
     <>
       {/* The button to open modal */}
       <label
-        // disabled={isSubmitDisabled}
+        disabled={props.isSubmitDisabled}
         htmlFor="my-modal-6"
         onClick={props.handleSubmit}
         className="btn rounded-full bg-[#300C38] hover:bg-[#880174] border-none text-white shadow-md disabled:bg-[#300C38] disabled:opacity-50"
       >
-        open modal Component
+        Submit
       </label>
 
       {/* Put this part before </body> tag */}
       <input type="checkbox" id="my-modal-6" className="modal-toggle" />
-      <div className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg text-[#22c55e]">
-            Congratulations, user was successfully created! 🎉
+      <div className="modal modal-bottom sm:modal-middle text-center">
+        <div className="modal-box bg-white">
+          <h3 className="font-bold text-xl text-[#22c55e] ">
+          🎊 Congratulations 🎊 <br></br>
+            user was successfully created!
           </h3>
-          <p className="py-4 text-white">
-            You've been selected for a chance to get one year of subscription to
-            use Wikipedia for free!
+          <p className="py-4 text-[#300C38] text-lg">
+            You may continue to create users!
           </p>
           <div className="modal-action">
-            <label htmlFor="my-modal-6" className="btn btn-sm rounded-full bg-[#300C38] hover:bg-[#880174] border-none">
+            <label htmlFor="my-modal-6" className="btn btn-sm rounded-full bg-[#300C38] hover:bg-[#880174] border-none text-white shadow-md disabled:bg-[#300C38] disabled:opacity-50">
               Ok
             </label>
           </div>
