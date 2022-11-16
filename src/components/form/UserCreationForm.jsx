@@ -1,4 +1,3 @@
-import Button from "../button/Button";
 import { useState } from "react";
 import PasswordCreation from "./inputs/PasswordCreation";
 
@@ -200,7 +199,7 @@ const UserCreationForm = (props) => {
 
           {/* The button to open modal */}
           <label
-          disabled={isSubmitDisabled}
+          // disabled={isSubmitDisabled}
           htmlFor="my-modal-6"
           onClick={handleSubmit}
           className="btn rounded-full bg-[#300C38] hover:bg-[#880174] border-none text-white shadow-md disabled:bg-[#300C38] disabled:opacity-50">open modal
