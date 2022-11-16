@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SuccessModal from "../madal/SuccessModal";
 import PasswordCreation from "./inputs/PasswordCreation";
 
 const UserCreationForm = (props) => {
@@ -216,6 +217,8 @@ const UserCreationForm = (props) => {
               </div>
             </div>
           </div>
+
+          <SuccessModal handleSubmit={handleSubmit} />
 
 
         </div>
