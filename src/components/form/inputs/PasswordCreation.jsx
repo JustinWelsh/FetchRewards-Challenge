@@ -1,4 +1,4 @@
-import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { useState } from "react";
 
 
@@ -18,9 +18,9 @@ const PasswordCreation = (props) => {
         />
         <div className="absolute right-2 top-5">
           {!passwordVis ? (
-            <AiFillEye onClick={() => setPasswordVis(!passwordVis)} />
+            <AiOutlineEye onClick={() => setPasswordVis(!passwordVis)} />
           ) : (
-            <AiFillEyeInvisible onClick={() => setPasswordVis(!passwordVis)} />
+            <AiOutlineEyeInvisible onClick={() => setPasswordVis(!passwordVis)} />
           )}
         </div>
 
@@ -42,9 +42,9 @@ const PasswordCreation = (props) => {
         />
         <div className="absolute right-2 top-5">
           {!confirmPwVis ? (
-            <AiFillEye onClick={() => setConfirmPwVis(!confirmPwVis)} />
+            <AiOutlineEye onClick={() => setConfirmPwVis(!confirmPwVis)} />
           ) : (
-            <AiFillEyeInvisible
+            <AiOutlineEyeInvisible
               onClick={() => setConfirmPwVis(!confirmPwVis)}
             />
           )}
