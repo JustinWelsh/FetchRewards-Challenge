@@ -1,3 +1,6 @@
+## `Visit` site below
+[Link to site](https://fetch-rewards-challenge-three.vercel.app/)
+
 ## `How` to run the app:
 1. npm install
 2. npm run start
@@ -40,5 +43,6 @@ The site must:
 4. User cannot multi-click submit button
 5. reset state upon successful submit
 6. Mobile responsive
+7. Hosted with Vercel
 
 
