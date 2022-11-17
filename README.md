@@ -7,6 +7,15 @@ This `User Creation Form` does just that.
 It is a single page site that allows users to create users.
 Pulling and mapping through data from an endpoint provided to render options for two select inputs - `occupation` and `state`. The app has on-change form validation for all inputs on the form which upon filling out correctly will enable the submit button allowing users to submit the form. The submit handler triggers a POST request to the same endpoint and if successful the user will recieve a pop-up success message.
 
+**Empty form**
+![Empty form](public/images/readme/empty-form.png)
+**Form errors**
+![Form errors](public/images/readme/form-errors.png)
+**Form filled correctly**
+![Form filled correctly](public/images/readme/form-filled.png)
+**Success message**
+![Success message](public/images/readme/success-msg.png)
+
 ## `How` to setup locally:
 
 
