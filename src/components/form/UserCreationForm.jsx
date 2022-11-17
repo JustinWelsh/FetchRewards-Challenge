@@ -158,7 +158,7 @@ const UserCreationForm = (props) => {
             )}
           </div>
 
-          <div className="lg:flex lg:gap-3 focus:bg-[#FAA916]">
+          <div className="xl:flex lg:gap-3 focus:bg-[#FAA916]">
             <select
             name="occupation" value={userForm.occupation}
             onChange={handleChange}
@@ -168,7 +168,7 @@ const UserCreationForm = (props) => {
             </select>
 
             {userForm.errors.occupation !== '' && (
-              <p className="text-sm text-[#f87171] pt-2">{userForm.errors.occupation}</p>
+              <p className="text-sm text-[#f87171] mb-2">{userForm.errors.occupation}</p>
             )}
             <select
             name="state" value={userForm.state}
@@ -179,7 +179,7 @@ const UserCreationForm = (props) => {
             </select>
 
             {userForm.errors.state !== '' && (
-              <p className="text-sm text-[#f87171] pt-2">{userForm.errors.state}</p>
+              <p className="text-sm text-[#f87171] my-2">{userForm.errors.state}</p>
             )}
           </div>
 

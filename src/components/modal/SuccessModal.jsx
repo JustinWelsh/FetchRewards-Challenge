@@ -3,7 +3,7 @@ const SuccessModal = (props) => {
     <>
       {/* The button to open modal */}
       <label
-        // disabled={props.isSubmitDisabled}
+        disabled={props.isSubmitDisabled}
         htmlFor="my-modal-6"
         onClick={props.handleSubmit}
         className="btn rounded-full bg-[#300C38] hover:bg-[#880174] border-none text-white shadow-md disabled:bg-[#300C38] disabled:opacity-50 mt-5"
