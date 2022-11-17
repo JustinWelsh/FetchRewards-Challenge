@@ -20,9 +20,9 @@ const UserCreationForm = (props) => {
       confirmPassword: '',
     }
   }
+
   const [userForm, setUserForm] = useState(initialState);
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true)
-  const [successAlertHidden, setSuccessAlertHidden] = useState(true)
 
   const validEmailRegex = RegExp(
     /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
@@ -107,7 +107,7 @@ const UserCreationForm = (props) => {
       setIsSubmitDisabled(true)
     }
   }
-  
+
   const handleSubmit = () => {
     if(validateForm(userForm.errors)) {
       console.info('Valid Form')
@@ -131,9 +131,8 @@ const UserCreationForm = (props) => {
           console.log("201 success!")
           setUserForm(initialState);
           setIsSubmitDisabled(true)
-          setSuccessAlertHidden(false)
         }
-      }) // if (201) => reset state | re enable submit btn | render success message.
+      }) // if (201) => reset state | re enable submit btn.
 
     }else{
       console.error('Invalid Form')
