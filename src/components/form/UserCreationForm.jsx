@@ -139,9 +139,9 @@ const UserCreationForm = (props) => {
   
   return (
     <>
-      <div className="card flex-shrink-0 w-full shadow-2xl bg-white pt-7
+      <div className="card flex-shrink-0 w-full shadow-2xl bg-white pt-3 sm:pt-7
       max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
-        <h1 className="text-4xl font-bold text-[#300C38] text-center">
+        <h1 className="text-3xl sm:text-4xl font-bold text-[#300C38] text-center">
           User Creation Form
         </h1>
         <div className="card-body text-[#300C38]">
