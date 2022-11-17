@@ -11,7 +11,6 @@ const SuccessModal = (props) => {
         Submit
       </label>
 
-      {/* Put this part before </body> tag */}
       <input type="checkbox" id="my-modal-6" className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle text-center">
         <div className="modal-box bg-white border-2">

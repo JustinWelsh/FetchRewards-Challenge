@@ -33,16 +33,19 @@ const UserCreationForm = (props) => {
     return valid;
   };
 
+  // To ensure entire form is filled upon submit
   const isEmpty = () => {
     if(userForm.name === '' || userForm.occupation === '' || userForm.state === '' || userForm.email === '' || userForm.password === '' || userForm.confirmPassword === '') {
       return true
     } return false
   }
 
+  // Mapping data to display <option>
   const occupationElements = props.endpointData?.occupations?.map((index) => (
     <option key={index}>{index}</option>
   ));
 
+  // Mapping data to display <option>
   const stateElements = props.endpointData?.states?.map((index) => (
     <option key={index.name}>{index.name}</option>
   ));
@@ -104,6 +107,7 @@ const UserCreationForm = (props) => {
       setIsSubmitDisabled(true)
     }
   }
+  
   const handleSubmit = () => {
     if(validateForm(userForm.errors)) {
       console.info('Valid Form')

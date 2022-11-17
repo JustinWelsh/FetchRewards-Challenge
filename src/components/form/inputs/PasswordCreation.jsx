@@ -3,6 +3,7 @@ import { useState } from "react";
 
 
 const PasswordCreation = (props) => {
+  // state to help conditionally render icons and toggle 'input' type.
     const [passwordVis, setPasswordVis] = useState(false)
     const [confirmPwVis, setConfirmPwVis] = useState(false)
   return (

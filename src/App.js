@@ -5,10 +5,12 @@ import { useState, useEffect } from "react"
 
 function App() {
 
+  // State for data to minimize api calls
   const [endpointData, setEndpointData] = useState(null)
 
+  // synchronous call on component load by useEffect.
+  // no dependencies needed.
   useEffect(() => {
-    // synchronous call
     fetch(`https://frontend-take-home.fetchrewards.com/form`)
     .then(res => res.json())
     .then(data => setEndpointData(data))
