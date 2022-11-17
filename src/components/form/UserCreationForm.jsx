@@ -158,11 +158,11 @@ const UserCreationForm = (props) => {
             )}
           </div>
 
-          <div className="sm:flex sm:gap-8 sm:py-3 focus:bg-[#FAA916]">
+          <div className="lg:flex lg:gap-3 focus:bg-[#FAA916]">
             <select
             name="occupation" value={userForm.occupation}
             onChange={handleChange}
-            className="select select-ghost max-w-xs bg-white focus:bg-[#FAA916] focus:text-white shadow-md mb-2 sm:my-0">
+            className="select select-ghost bg-white focus:bg-[#FAA916] focus:text-white shadow-md mb-2 lg:m-0">
               <option>Occupation</option>
               {occupationElements}
             </select>
@@ -173,7 +173,7 @@ const UserCreationForm = (props) => {
             <select
             name="state" value={userForm.state}
             onChange={handleChange}
-            className="select select-ghost max-w-xs bg-white focus:bg-[#FAA916] focus:text-white shadow-md mt-2 sm:my-0">
+            className="select select-ghost bg-white focus:bg-[#FAA916] focus:text-white shadow-md mt-2 lg:m-0">
               <option>State</option>
               {stateElements}
             </select>
