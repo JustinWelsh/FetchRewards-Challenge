@@ -16,7 +16,7 @@ const SuccessModal = (props) => {
       <div className="modal modal-bottom sm:modal-middle text-center">
         <div className="modal-box bg-white border-2">
           <h3 className="font-bold text-xl text-[#22c55e] p-4">
-          🎊 Congratulations 🎊
+          🎊 Congratulations! 🎊
           </h3>
           <p className="py-4 text-[#300C38] text-lg">
           User was successfully created,<br></br>you may continue to create users!
