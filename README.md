@@ -2,6 +2,9 @@
 1. npm install
 2. npm run start
 
+## `How` to setup locally:
+[Cloning repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+
 ## `What` does the app do:
 This `User Creation Form` does just that.
 It is a single page site that allows users to create users.
@@ -15,9 +18,6 @@ Pulling and mapping through data from an endpoint provided to render options for
 ![Form filled correctly](public/images/readme/form-filled.png)
 **Success message**
 ![Success message](public/images/readme/success-msg.png)
-
-## `How` to setup locally:
-
 
 ## `Technologies` used
 - React
