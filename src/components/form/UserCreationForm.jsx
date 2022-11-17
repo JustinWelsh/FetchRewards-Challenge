@@ -55,6 +55,7 @@ const UserCreationForm = (props) => {
     const value = e.target.value;
     let errors = userForm.errors;
 
+    // Form error condition and setting
     switch (name) {
       case 'name': 
         errors.fullName = 
