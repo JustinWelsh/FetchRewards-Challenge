@@ -4,6 +4,7 @@ import PasswordCreation from "./inputs/PasswordCreation";
 
 const UserCreationForm = (props) => {
 
+  // Set initial state obj. template to make it easy to reset the "userForm" state as needed.
   const initialState = {
     name: "",
     occupation: "",
@@ -24,9 +25,11 @@ const UserCreationForm = (props) => {
   const [userForm, setUserForm] = useState(initialState);
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true)
 
+  // Email validation
   const validEmailRegex = RegExp(
     /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
   );
+  // Form validation
   const validateForm = errors => {
     let valid = true;
     Object.values(errors).forEach(val => val.length > 0 && (valid = false));
@@ -53,18 +56,18 @@ const UserCreationForm = (props) => {
   const handleChange = (e) => {
     const name = e.target.name; 
     const value = e.target.value;
-    let errors = userForm.errors;
+    let errors = userForm.errors; // variable obj. path shortcut
 
     // Form error condition and setting
     switch (name) {
       case 'name': 
         errors.fullName = 
-          value.length < 5
-            ? 'Full Name must be at least 5 characters long!'
-            : '';
+          value.length < 5 // ternary condition
+            ? 'Full Name must be at least 5 characters long!' //set to this
+            : ''; //else, set to empty string
         break;
 
-        case 'occupation': 
+        case 'occupation':
         errors.occupation = 
           value === '' || value === 'Occupation'
             ? 'required'
@@ -99,13 +102,16 @@ const UserCreationForm = (props) => {
         break;
     }
     setUserForm({
-      ...userForm,
-      [name]: value
+      ...userForm, // use of spread operator to copy all previous state
+      // square bracket notation | computed property name
+      [name]: value // change only the name that matches event.target.name (or input name) with the corresponding event.target.value
     })
-    if(validateForm(userForm.errors) && !isEmpty()) {
-      setIsSubmitDisabled(false)
+
+    // logic for disabling submit button 
+    if(validateForm(userForm.errors) && !isEmpty()) { // no errors & the form is not empty..
+      setIsSubmitDisabled(false) // enable
     } else {
-      setIsSubmitDisabled(true)
+      setIsSubmitDisabled(true) // disable
     }
   }
 
@@ -127,13 +133,13 @@ const UserCreationForm = (props) => {
         }),
       })
       .then(res => {
-        // console.log(res)
         if (res.status === 201) {
           console.log("201 success!")
-          setUserForm(initialState);
-          setIsSubmitDisabled(true)
+          console.log(userForm)
+          setUserForm(initialState); // resetting state
+          setIsSubmitDisabled(true) // re-disable submit button
         }
-      }) // if (201) => reset state | re enable submit btn.
+      })
 
     }else{
       console.error('Invalid Form')

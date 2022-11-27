@@ -10,7 +10,7 @@ const PasswordCreation = (props) => {
     <>
       <div className="form-control py-2 relative">
         <input
-          type={passwordVis ? "text" : "password"}
+          type={passwordVis ? "text" : "password"} // ternary to toggle `type` based on state boolean value
           placeholder="password"
           name="password"
           value={props.userForm.password}
@@ -18,6 +18,7 @@ const PasswordCreation = (props) => {
           className="input input-bordered bg-white focus:border-[#FAA916]"
         />
         <div className="absolute right-2 top-5">
+         {/* ternary to toggle `icon` based on state boolean value */}
           {!passwordVis ? (
             <AiOutlineEye onClick={() => setPasswordVis(!passwordVis)} />
           ) : (
@@ -34,7 +35,7 @@ const PasswordCreation = (props) => {
 
       <div className="form-control py-2 relative">
         <input
-          type={confirmPwVis ? "text" : "password"}
+          type={confirmPwVis ? "text" : "password"} // ternary to toggle `type` based on state boolean value
           placeholder="confirm password"
           name="confirmPassword"
           value={props.userForm.confirmPassword}
@@ -42,6 +43,7 @@ const PasswordCreation = (props) => {
           className="input input-bordered bg-white focus:border-[#FAA916]"
         />
         <div className="absolute right-2 top-5">
+          {/* ternary to toggle `icon` based on state boolean value */}
           {!confirmPwVis ? (
             <AiOutlineEye onClick={() => setConfirmPwVis(!confirmPwVis)} />
           ) : (
