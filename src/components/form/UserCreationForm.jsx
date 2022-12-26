@@ -45,12 +45,12 @@ const UserCreationForm = (props) => {
 
   // Mapping data to display <option>
   const occupationElements = props.endpointData?.occupations?.map((index) => (
-    <option key={index}>{index}</option>
+    <option key={index} value={index}>{index}</option>
   ));
 
   // Mapping data to display <option>
   const stateElements = props.endpointData?.states?.map((index) => (
-    <option key={index.name}>{index.name}</option>
+    <option key={index.name} value={index.name}>{index.name}</option>
   ));
 
   const handleChange = (e) => {
@@ -108,7 +108,7 @@ const UserCreationForm = (props) => {
     })
 
     // logic for disabling submit button 
-    if(validateForm(userForm.errors) && !isEmpty()) { // no errors & the form is not empty..
+    if(validateForm(userForm.errors) && !isEmpty()) { // no errors & 
       setIsSubmitDisabled(false) // enable
     } else {
       setIsSubmitDisabled(true) // disable
@@ -170,7 +170,7 @@ const UserCreationForm = (props) => {
 
           <div className="xl:flex lg:gap-3 focus:bg-[#FAA916]">
             <select
-            name="occupation" value={userForm.occupation}
+            name="occupation"
             onChange={handleChange}
             className="select select-ghost bg-white focus:bg-[#FAA916] focus:text-white shadow-md mb-2 lg:m-0">
               <option>Occupation</option>
